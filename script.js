@@ -176,30 +176,58 @@ let books = [
 
 
 
-// Zugriff auf das Div-Element
+// Zugriff auf das Div-Element, in das die Bücher eingefügt werden
 const inputBookDiv = document.getElementById('input_book');
 
-// Leere Variable für die HTML-Inhalte
-let booksHTML = '';
+// Funktion, um die Bücher anzuzeigen
+function displayBooks() {
+  let booksHTML = ''; // Leere Variable für die HTML-Inhalte
+  books.forEach((book, index) => {
+    booksHTML += `
+      <div class="book">
+        <h2>${book.name}</h2>
+        <p><strong>Autor:</strong> ${book.author}</p>
+        <p><strong>Genre:</strong> ${book.genre}</p>
+        <p><strong>Erscheinungsjahr:</strong> ${book.publishedYear}</p>
+        <p><strong>Preis:</strong> €${book.price.toFixed(2)}</p>
+        <p><strong>Likes:</strong> ${book.likes}</p>
+        <button class="like-button" onclick="toggleLike(${index})">
+          ${book.liked ? "Gefällt mir nicht mehr" : "Gefällt mir"}
+        </button>
+        <h3>Kommentare:</h3>
+        <ul>
+          ${book.comments.map(comment => `<li><strong>${comment.name}:</strong> ${comment.comment}</li>`).join('')}
+        </ul>
+        <input type="text" id="comment-input-${index}" placeholder="Kommentar hinzufügen">
+        <button onclick="addComment(${index})">Speichern</button>
+      </div>
+    `;
+  });
+  inputBookDiv.innerHTML = booksHTML; // HTML-Inhalte einfügen
+}
 
-// Durchlaufe alle Bücher im Array
-books.forEach(book => {
-  booksHTML += `
-    <div class="book">
-      <h2>${book.name}</h2>
-      <p><strong>Author:</strong> ${book.author}</p>
-      <p><strong>Genre:</strong> ${book.genre}</p>
-      <p><strong>Published:</strong> ${book.publishedYear}</p>
-      <p><strong>Price:</strong> $${book.price.toFixed(2)}</p>
-      <p><strong>Likes:</strong> ${book.likes}</p>
-      <input type="text" placeholder="Kommentar"> 
-      <button>Speichern</button>
-    </div>
-  `;
-});
+// Funktion, um Like-Status zu toggeln
+function toggleLike(index) {
+  books[index].liked = !books[index].liked;
+  books[index].likes += books[index].liked ? 1 : -1;
+  displayBooks(); // Aktualisiert die Ansicht
+}
 
-// Füge die gesamte HTML-Struktur in das Div ein
-inputBookDiv.innerHTML = booksHTML;
+// Funktion, um einen Kommentar hinzuzufügen
+function addComment(index) {
+  const commentInput = document.getElementById(`comment-input-${index}`);
+  const newComment = commentInput.value.trim();
+  if (newComment) {
+    books[index].comments.push({ name: "Anonym", comment: newComment });
+    commentInput.value = ''; // Eingabefeld zurücksetzen
+    displayBooks(); // Aktualisiert die Ansicht
+  } else {
+    alert("Bitte geben Sie einen Kommentar ein.");
+  }
+}
+
+// Bücher beim Laden der Seite anzeigen
+displayBooks();
 
 
 
