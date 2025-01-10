@@ -1,4 +1,4 @@
-let books = [
+let books = JSON.parse(localStorage.getItem('books')) || [
     {
       "name": "Die Geheimnisse des Ozeans",
       "author": "Clara Meer",
@@ -211,6 +211,7 @@ function toggleLike(index) {
   books[index].liked = !books[index].liked;
   books[index].likes += books[index].liked ? 1 : -1;
   displayBooks(); // Aktualisiert die Ansicht
+  saveToLocalStorage(); // Änderungen speichern
 }
 
 // Funktion, um einen Kommentar hinzuzufügen
@@ -220,6 +221,7 @@ function addComment(index) {
   if (newComment) {
     books[index].comments.push({ name: "Anonym", comment: newComment });
     commentInput.value = ''; // Eingabefeld zurücksetzen
+    saveToLocalStorage(); // Änderungen speichern
     displayBooks(); // Aktualisiert die Ansicht
   } else {
     alert("Bitte geben Sie einen Kommentar ein.");
@@ -229,7 +231,10 @@ function addComment(index) {
 // Bücher beim Laden der Seite anzeigen
 displayBooks();
 
-
+// Funktion, um die Bücher im Local Storage zu speichern
+function saveToLocalStorage() {
+  localStorage.setItem('books', JSON.stringify(books));
+}
 
 
 
@@ -237,7 +242,5 @@ displayBooks();
 
 // To Do's:
 
-// <input type="text"> und <button>Speichern</button> miteinander verknüpfen.
-// Local-Storage einbinden damit auch alles gespeichert bleibt
 // Icons und img's einfügen
 // CSS Styling
