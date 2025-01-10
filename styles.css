@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+}
+
+header {
+    background-color: blue;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+}
+
+.book {
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000000; /* Trennlinie */
+    background-color: #f9f9f9;
+}
+  
+.book h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+  
+.book p {
+    margin: 5px 0;
+}
