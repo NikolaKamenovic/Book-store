@@ -38,6 +38,7 @@ body {
   .book h2 {
     font-size: 20px;
     margin-bottom: 10px;
+    text-align: center;
   }
   
   .book p {
@@ -75,4 +76,10 @@ body {
   
   .book button:hover {
     background-color: #45a049;
+  }
+
+  .book img {
+    width: 300px;
+    object-fit: cover;
+    border-radius: 8px;
   }

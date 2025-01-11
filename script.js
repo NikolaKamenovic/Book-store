@@ -186,6 +186,7 @@ function displayBooks() {
     booksHTML += `
       <div class="book">
         <h2>${book.name}</h2>
+        <img src="./img/book-bindings-3348945_640.jpg" alt="Book_Picture">
         <p><strong>Autor:</strong> ${book.author}</p>
         <p><strong>Genre:</strong> ${book.genre}</p>
         <p><strong>Erscheinungsjahr:</strong> ${book.publishedYear}</p>
@@ -244,3 +245,4 @@ function saveToLocalStorage() {
 
 // Icons und img's einfügen
 // CSS Styling
+// Scrollbar bei den Kommentaren hinzufügen
