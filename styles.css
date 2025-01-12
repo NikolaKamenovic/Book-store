@@ -79,18 +79,10 @@ body {
   }
   
   .book button {
-    background-color: #6C2D2C;
-    color: white;
     border: none;
-    padding: 8px 12px;
     margin-top: 10px;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .book button:hover {
-    background-color: #9F4636;
+    background-color: #42313A;
   }
 
   .book img {
@@ -105,4 +97,15 @@ body {
 
   .save-button-logo {
     display: flex;
+  }
+
+  .save-button-logo button img {
+    width: 30px; /* Größe des Icons */
+    filter: invert(1); /* Ändert die Farbe auf Weiß */
+    transition: filter 0.3s ease, transform 0.3s ease; /* Sanfte Übergänge */
+  }
+
+  .save-button-logo button:hover img {
+    filter: invert(1) brightness(1.5); /* Helleres Weiß beim Hover */
+    transform: scale(1.1); /* Leichtes Vergrößern beim Hover */
   }

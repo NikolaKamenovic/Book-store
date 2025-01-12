@@ -245,6 +245,5 @@ function saveToLocalStorage() {
 
 // To Do's:
 
-// Icons und img's einfügen (Icons sind bereits im Ordner!)
 // CSS Styling
 // Scrollbar bei den Kommentaren hinzufügen
