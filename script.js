@@ -193,14 +193,16 @@ function displayBooks() {
         <p><strong>Preis:</strong> €${book.price.toFixed(2)}</p>
         <p><strong>Likes:</strong> ${book.likes}</p>
         <button class="like-button" onclick="toggleLike(${index})">
-          ${book.liked ? "Gefällt mir nicht mehr" : "Gefällt mir"}
+          <img src="./img/Icon/${book.liked ? 'heart-filled' : 'heart-empty'}.png" alt="Like-Icon" class="like-icon">
         </button>
         <h3>Kommentare:</h3>
         <ul>
           ${book.comments.map(comment => `<li><strong>${comment.name}:</strong> ${comment.comment}</li>`).join('')}
         </ul>
+        <div class="save-button-logo">
         <input type="text" id="comment-input-${index}" placeholder="Kommentar hinzufügen">
-        <button onclick="addComment(${index})">Speichern</button>
+        <button onclick="addComment(${index})"><img src="./img/Icon/memory-card.png" alt="Save-Button-Logo"></button>
+        </div>
       </div>
     `;
   });
@@ -243,6 +245,6 @@ function saveToLocalStorage() {
 
 // To Do's:
 
-// Icons und img's einfügen
+// Icons und img's einfügen (Icons sind bereits im Ordner!)
 // CSS Styling
 // Scrollbar bei den Kommentaren hinzufügen
